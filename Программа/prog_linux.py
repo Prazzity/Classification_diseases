@@ -3,7 +3,6 @@ import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
 from tkinter import filedialog
-import tempfile, base64, zlib
 import numpy as np
 
 class App:
@@ -20,19 +19,10 @@ class App:
 
 
     def init_ui(self):
-        # Удаление иконки
-        ICON = zlib.decompress(
-            base64.b64decode("eJxjYGAEQgEBBiDJwZDBysAgxsDAoAHEQCEGBQaIOAg4sDIgACMUj4JRMApGwQgF/ykEAFXxQRc="))
-        _, ICON_PATH = tempfile.mkstemp()
-        with open(ICON_PATH, "wb") as icon_file:
-            icon_file.write(ICON)
-        self.window.iconbitmap(default=ICON_PATH)
 
-        # Надпись
         self.label = tk.Label(self.window, text="Нажмите на кнопку, чтобы загрузить изображение и сделать прогноз", font=("Arial", 14))
         self.label.pack(padx=50, pady=5)
 
-        # Кнопка загрузки
         self.load_button = tk.Button(self.window, text="Загрузить", command=self.load_image, font=("Arial", 14))
         self.load_button.pack(padx=5, pady=5)
 
