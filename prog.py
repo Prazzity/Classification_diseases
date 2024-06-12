@@ -21,11 +21,9 @@ class App:
 
 
     def init_ui(self):
-        # Надпись
         self.label = CTkLabel(self.window, text="Нажмите на кнопку, чтобы загрузить изображение и сделать прогноз", font=("Arial", 14))
         self.label.pack(padx=50, pady=5)
 
-        # Кнопка загрузки
         self.load_button = CTkButton(self.window, text="Загрузить", command=self.load_image, font=("Arial", 14))
         self.load_button.pack(padx=5, pady=5)
 
@@ -60,7 +58,6 @@ class App:
         img = img.resize((875, 875), Image.LANCZOS)
         self.orig_img = img.copy()  # Keep a copy of the original image
         self.img_tk = ImageTk.PhotoImage(img)  # Initial image
-        # img_label.configure(image=self.img_tk)
 
         self.canvas.create_image(0, 0, image=self.img_tk, anchor="nw")
         path_label.configure(text=f'Путь: {self.img_path}')
